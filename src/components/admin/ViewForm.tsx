@@ -6,6 +6,7 @@ interface Field {
   name: string;
   required: boolean;
   options?: { label: string; value: string }[];
+  order?: number; // ✅ added this line
 }
 
 interface FormDetail {
