@@ -7,14 +7,22 @@ interface Props {
 const AdminLogin: React.FC<Props> = ({ onLogin }) => {
   const [adminId, setAdminId] = useState("");
 
-  const handleLogin = () => {
-    if (adminId.trim() !== "") {
-      localStorage.setItem("token", "changeme_admin_token_123");
-      onLogin();
-    } else {
-      alert("Please enter Admin ID!");
-    }
-  };
+const handleLogin = () => {
+  if (adminId.trim() === "") {
+    alert("Please enter Admin ID!");
+    return;
+  }
+
+  if (adminId !== "changeme_admin_token_123") {
+    alert("Invalid Login ID");
+    return;
+  }
+
+  // valid
+  localStorage.setItem("token", "changeme_admin_token_123");
+  onLogin();
+};
+
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
